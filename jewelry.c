@@ -291,7 +291,7 @@ void addJewelry()
     
     //check if there is a dupelicate
     int isThereDupe = 0;
-    int dupeIndex;
+    int dupeIndex = -1;
     for (int i = 0; i < jewelryCount; i++)
     {
         if (strcmp(jewelry[i].name, newJewelry.name) == 0)
@@ -329,9 +329,15 @@ void addJewelry()
         }
     }
 
-    if (strcmp(newJewelry.category, jewelry[dupeIndex].category) != 0 && isThereDupe) {
+    newJewelry.category[0] = toupper((unsigned char)newJewelry.category[0]);
+
+    if (strcmp(newJewelry.category, jewelry[dupeIndex].category) != 0 && isThereDupe != -1) {
         isThereDupe = 0;
     }
+
+    newJewelry.category[0] = tolower((unsigned char)newJewelry.category[0]);
+
+    // printf("%d\n", isThereDupe);
     
     // checking the dupe if the type is the same
     if (isThereDupe == 1)
