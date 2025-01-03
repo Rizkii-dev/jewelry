@@ -364,6 +364,8 @@ void addJewelry()
                 newJewelry.category[i] = tolower((unsigned char)newJewelry.category[i]);
             }
         }
+        
+        isThereDupe = 0;
     }
     
     for (int i = 0; i < len; i++)
