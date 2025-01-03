@@ -282,7 +282,7 @@ void addJewelry()
     char id[6];
 
     printf("Enter Jewelry Name (3-20 characters): ");
-    scanf(" %[^\n]", newJewelry.name);
+    scanf(" %[^\n]", newJewelry.name); getchar();
     while (strlen(newJewelry.name) < 3 || strlen(newJewelry.name) > 20)
     {
         printf("Invalid name length. Please enter a valid name: ");
@@ -302,7 +302,7 @@ void addJewelry()
     }
 
     printf("Enter Jewelry Description (10-50 characters): ");
-    scanf(" %[^\n]", newJewelry.description);
+    scanf(" %[^\n]", newJewelry.description); getchar();
     while (strlen(newJewelry.description) < 10 || strlen(newJewelry.description) > 50)
     {
         printf("Invalid description length. Please enter a valid description: ");
@@ -310,7 +310,7 @@ void addJewelry()
     }
 
     printf("Enter Jewelry Category (Ring/Bracelet/Necklace): ");
-    scanf("%s", newJewelry.category);
+    scanf("%s", newJewelry.category); getchar();
     int len = strlen(newJewelry.category);
 
     for (int i = 0; i < len; i++)
@@ -321,7 +321,7 @@ void addJewelry()
     while (strcmp(newJewelry.category, "ring") != 0 && strcmp(newJewelry.category, "bracelet") != 0 && strcmp(newJewelry.category, "necklace") != 0)
     {
         printf("Invalid category. Please enter 'Ring', 'Bracelet', or 'Necklace': ");
-        scanf("%s", newJewelry.category);
+        scanf("%s", newJewelry.category); getchar();
 
         for (int i = 0; i < len; i++)
         {
@@ -329,66 +329,59 @@ void addJewelry()
         }
     }
 
-    if (strcmp(newJewelry.category, jewelry[dupeIndex].category) != 0) {
+    if (strcmp(newJewelry.category, jewelry[dupeIndex].category) != 0 && isThereDupe) {
         isThereDupe = 0;
     }
     
-    //checking the dupe if the type is the same
-    while (isThereDupe)
+    // checking the dupe if the type is the same
+    if (isThereDupe == 1)
     {
         printf("Invalid category. There is already a similiar name Jewelry that is in this category\n");
         printf("what do you want to do? put it in a different category or cancel\n1. Different category\n2. cancel\nchoose: ");
         int choose;
-        scanf ("%d", &choose);
+        scanf ("%d", &choose); getchar();
         
         if (choose == 2) {
             return;
-		}
-		
-        printf("Enter Jewelry Category (Ring/Bracelet/Necklace): ");
-        scanf("%s", newJewelry.category);
-
-        for (int i = 0; i < len; i++)
-        {
-            newJewelry.category[i] = tolower((unsigned char)newJewelry.category[i]);
-        }
-
-        while (strcmp(newJewelry.category, jewelry[dupeIndex].category) == 0)
-        {
-            printf("Invalid category. There is already a similiar name Jewelry that is in this category\n");
+		}else {
             printf("Enter Jewelry Category (Ring/Bracelet/Necklace): ");
-            scanf("%s", newJewelry.category);
+            scanf("%s", newJewelry.category); getchar();
 
             for (int i = 0; i < len; i++)
             {
                 newJewelry.category[i] = tolower((unsigned char)newJewelry.category[i]);
             }
+
+            while (strcmp(newJewelry.category, jewelry[dupeIndex].category) == 0)
+            {
+                printf("Invalid category. There is already a similiar name Jewelry that is in this category\n");
+                printf("Enter Jewelry Category (Ring/Bracelet/Necklace): ");
+                scanf("%s", newJewelry.category); getchar();
+
+                for (int i = 0; i < len; i++)
+                {
+                    newJewelry.category[i] = tolower((unsigned char)newJewelry.category[i]);
+                }
+            }
         }
-        
-        isThereDupe = 0;
-    }
-    
-    for (int i = 0; i < len; i++)
-    {
-        newJewelry.category[i] = tolower((unsigned char)newJewelry.category[i]);
     }
     
     newJewelry.category[0] = toupper((unsigned char)newJewelry.category[0]);
 
     printf("Enter Jewelry Price (500-5000): ");
-    scanf("%d", &newJewelry.price);
+    scanf("%d", &newJewelry.price); getchar();
     while (newJewelry.price < 500 || newJewelry.price > 5000)
     {
         printf("Invalid price. Please enter a price between 500 and 5000: ");
-        scanf("%d", &newJewelry.price);
+        scanf("%d", &newJewelry.price); getchar();
     }
 
     printf("Enter Jewelry Stock (1-100): ");
-    scanf("%d", &newJewelry.stock);
+    scanf("%d", &newJewelry.stock); getchar();
     while (newJewelry.stock < 1 || newJewelry.stock > 100)
     {
         printf("Invalid stock. Please enter a stock between 1 and 100: ");
-        scanf("%d", &newJewelry.stock);
+        scanf("%d", &newJewelry.stock); getchar();
     }
 
     // Generate Jewelry ID
