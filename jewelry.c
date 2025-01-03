@@ -371,6 +371,11 @@ void addJewelry()
             }
         }
     }
+
+    for (int i = 0; i < len; i++)
+    {
+        newJewelry.category[i] = tolower((unsigned char)newJewelry.category[i]);
+    }
     
     newJewelry.category[0] = toupper((unsigned char)newJewelry.category[0]);
 
