@@ -342,7 +342,7 @@ void addJewelry()
         scanf ("%d", &choose);
         
         if (choose == 2) {
-        	return;
+            return;
 		}
 		
         printf("Enter Jewelry Category (Ring/Bracelet/Necklace): ");
@@ -351,6 +351,18 @@ void addJewelry()
         for (int i = 0; i < len; i++)
         {
             newJewelry.category[i] = tolower((unsigned char)newJewelry.category[i]);
+        }
+
+        while (strcmp(newJewelry.category, jewelry[dupeIndex].category) == 0)
+        {
+            printf("Invalid category. There is already a similiar name Jewelry that is in this category\n");
+            printf("Enter Jewelry Category (Ring/Bracelet/Necklace): ");
+            scanf("%s", newJewelry.category);
+
+            for (int i = 0; i < len; i++)
+            {
+                newJewelry.category[i] = tolower((unsigned char)newJewelry.category[i]);
+            }
         }
     }
     
