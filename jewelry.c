@@ -347,6 +347,11 @@ void addJewelry()
 		
         printf("Enter Jewelry Category (Ring/Bracelet/Necklace): ");
         scanf("%s", newJewelry.category);
+
+        for (int i = 0; i < len; i++)
+        {
+            newJewelry.category[i] = tolower((unsigned char)newJewelry.category[i]);
+        }
     }
     
     for (int i = 0; i < len; i++)
