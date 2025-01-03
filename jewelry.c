@@ -323,6 +323,10 @@ void addJewelry()
         printf("Invalid category. Please enter 'Ring', 'Bracelet', or 'Necklace': ");
         scanf("%s", newJewelry.category);
     }
+
+    if (strcmp(newJewelry.category, jewelry[dupeIndex].category) != 0) {
+        isThereDupe = 0;
+    }
     
     //checking the dupe if the type is the same
     while (isThereDupe)
