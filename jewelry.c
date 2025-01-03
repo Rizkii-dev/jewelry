@@ -296,7 +296,7 @@ void addJewelry()
     {
         if (strcmp(jewelry[i].name, newJewelry.name) == 0)
         {
-//            dupeIndex = i;
+            dupeIndex = i;
             isThereDupe = 1;
         }
     }
