@@ -322,6 +322,11 @@ void addJewelry()
     {
         printf("Invalid category. Please enter 'Ring', 'Bracelet', or 'Necklace': ");
         scanf("%s", newJewelry.category);
+
+        for (int i = 0; i < len; i++)
+        {
+            newJewelry.category[i] = tolower((unsigned char)newJewelry.category[i]);
+        }
     }
 
     if (strcmp(newJewelry.category, jewelry[dupeIndex].category) != 0) {
